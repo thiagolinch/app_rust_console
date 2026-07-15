@@ -1,7 +1,9 @@
-use crate::tela::ler;
+use crate::{models::cliente::Cliente, tela::{ler, operacoes_basicas::*, servico_cliente::*}};
 
-pub fn mostra_menu() {
+pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
     loop {
+        limpar_tela();
+
         println!("\
             ==============Menu=============\n\
             Escolha uma das op;ões abaixo:\n\
@@ -13,11 +15,12 @@ pub fn mostra_menu() {
         ");
 
         let opcao = ler::ler_dados_int();
+        
 
         match opcao {
             1 => {
                 // Lógica para cadastrar cliente
-                println!("Cadastrar cliente selecionado.");
+                incluir_cliente(clientes);
             }
             2 => {
                 // Lógica para listar clientes
@@ -40,7 +43,8 @@ pub fn mostra_menu() {
             }
         }
 
-        println!("Digite enter para continuar");
-        ler::ler_dados();
+        // println!("Digite enter para continuar");
+        // ler::ler_dados();
+        esperar(1);
     }
 }
