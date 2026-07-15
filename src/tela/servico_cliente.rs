@@ -1,5 +1,5 @@
 
-use crate::{models::cliente::Cliente, tela::{ler::{ler_dados, ler_dados_int}, operacoes_basicas::*}};
+use crate::{models::cliente::Cliente, tela::{ler::*, operacoes_basicas::*, utils::*}};
 
 pub fn incluir_cliente(clientes: &mut Vec<Cliente>) {
     limpar_tela();
@@ -15,15 +15,6 @@ pub fn incluir_cliente(clientes: &mut Vec<Cliente>) {
     println!("Cliente cadastrado com sucesso");
     esperar(1);
 }
-
-fn digitar_dados_do_cliente(cliente: &mut Cliente) {
-    println!("Digite o nome do cliente");
-    cliente.nome = ler_dados();
-    println!("Digite o CPF do cliente: ");
-    cliente.cpf = ler_dados();
-    println!("Digite o endereço do cliente: ");
-    cliente.endereco = ler_dados();
-} 
 
 pub fn listar_clientes(clientes: &mut Vec<Cliente>) {
     limpar_tela();
@@ -96,32 +87,4 @@ pub fn excluir_cliente(clientes: &mut Vec<Cliente>) {
         println!("Cliente nao encontrado")
     }
     esperar(1);
-}
-
-fn buscar_cliente_id(clientes: &Vec<Cliente>, id: usize) -> Option<(usize, &Cliente)> {
-    clientes.iter().enumerate().find(|(_, cliente  )| cliente.id == id)
-}
-
-fn captura_id() -> usize {
-    limpar_tela();
-    println!("Digite o ID do cliente:");
-    ler_dados_int()
-}
-
-fn nao_tem_clientes(clientes: &[Cliente]) -> bool {
-    if clientes.len() == 0 {
-        println!("Nao existe cliente cadastrado");
-        esperar(1);
-        return true;
-    }
-    return false;
-}
-
-fn mostrar_cliente(cliente: &Cliente) {
-    println!("\
-        ID: {}\n\
-        Nome: {}\n\
-        CPF: {}\n\
-        Endereco: {}
-    ", cliente.id, cliente.nome,cliente.cpf,cliente.endereco)
 }
