@@ -8,9 +8,9 @@ pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
             ==============Menu=============\n\
             Escolha uma das op;ões abaixo:\n\
             1 - Cadastrar cliente\n\
-            2 - Alterar cliente\n\
-            3 - Excluir cliente\n\
-            4 - Listar clientes\n\
+            2 - Listar clientes\n\
+            3 - Alterar cliente\n\
+            4 - Excluir cliente\n\
             0 - Sair\n\
         ");
 
@@ -24,15 +24,15 @@ pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
             }
             2 => {
                 // Lógica para listar clientes
-                println!("Listar clientes selecionado.");
+                listar_clientes(clientes);
             }
             3 => {
-                // Logica para excluir o cliente selecionado
-                println!("Excluir cliente selecionado.");
+                // Logica para alterar o cliente selecionado
+                println!("alterar cliente selecionado.");
             }
             4 => {
-                // Logica para listar clientes
-                println!("Listar clientes")
+                // Logica para excluir clientes
+                println!("excluir clientes")
             }
             0 => {
                 // Logica para sair do programa
@@ -45,6 +45,6 @@ pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
 
         // println!("Digite enter para continuar");
         // ler::ler_dados();
-        esperar(1);
+        // esperar(1);
     }
 }

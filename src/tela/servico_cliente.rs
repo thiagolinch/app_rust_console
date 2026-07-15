@@ -19,3 +19,31 @@ pub fn incluir_cliente(clientes: &mut Vec<Cliente>) {
     println!("Cliente cadastrado com sucesso");
     esperar(1);
 }
+
+pub fn listar_clientes(clientes: &mut Vec<Cliente>) {
+    limpar_tela();
+
+    if clientes.len() == 0 {
+        println!("Nao existe cliente cadastrado");
+        esperar(1);
+        return;
+    }
+    println!("{}", "-".to_string().repeat(40));
+
+    for cliente in clientes{
+        mostrar_cliente(cliente);
+        println!("{}", "-".to_string().repeat(40));
+    }
+
+    println!("Digite enter para continuar...");
+    ler_dados();
+}
+
+fn mostrar_cliente(cliente: &mut Cliente) {
+    println!("\
+        ID: {}\n\
+        Nome: {}\n\
+        CPF: {}\n\
+        Endereco: {}
+    ", cliente.id, cliente.nome,cliente.cpf,cliente.endereco)
+}
