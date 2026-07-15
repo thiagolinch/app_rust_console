@@ -32,7 +32,7 @@ pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
             }
             4 => {
                 // Logica para excluir clientes
-                println!("excluir clientes")
+                excluir_cliente(clientes)
             }
             0 => {
                 // Logica para sair do programa

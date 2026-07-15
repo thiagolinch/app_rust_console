@@ -67,6 +67,37 @@ pub fn alterar_cliente(clientes: &mut Vec<Cliente>) {
     esperar(1);
 }
 
+pub fn excluir_cliente(clientes: &mut Vec<Cliente>) {
+    limpar_tela();
+    if nao_tem_clientes(clientes) {
+        return;
+    }
+
+    let id = captura_id();
+    if let Some((indice, cliente)) =  buscar_cliente_id(clientes, id){
+        println!("{}", "-".to_string().repeat(40));
+        println!("Confirme a exclusao do cliente abaixo?");
+        println!("{}", "-".to_string().repeat(40));
+        mostrar_cliente(cliente);
+        println!("{}", "-".to_string().repeat(40));
+        println!("\
+            1 - Sim\n\
+            2 - Não
+        ");
+        let opcao = ler_dados();
+        if opcao.trim() == "1" {
+            clientes.remove(indice);
+            limpar_tela();
+            println!("Cliente excluido com sucesso");
+            esperar(1);
+        }
+    } else {
+        limpar_tela();
+        println!("Cliente nao encontrado")
+    }
+    esperar(1);
+}
+
 fn buscar_cliente_id(clientes: &Vec<Cliente>, id: usize) -> Option<(usize, &Cliente)> {
     clientes.iter().enumerate().find(|(_, cliente  )| cliente.id == id)
 }
