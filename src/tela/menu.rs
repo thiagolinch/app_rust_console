@@ -28,7 +28,7 @@ pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
             }
             3 => {
                 // Logica para alterar o cliente selecionado
-                println!("alterar cliente selecionado.");
+                alterar_cliente(clientes);
             }
             4 => {
                 // Logica para excluir clientes
